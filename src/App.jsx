@@ -5,6 +5,7 @@ export default function App() {
   const bgAudioRef = useRef(null);
   const noButtonRef = useRef(null);
   const basePosRef = useRef({ left: 0, top: 0 });
+  const [hasStarted, setHasStarted] = useState(false);
   const [noPos, setNoPos] = useState({ dx: 0, dy: 0 });
   const [womphCount, setWomphCount] = useState(0);
   const [isBroken, setIsBroken] = useState(false);
@@ -41,7 +42,7 @@ export default function App() {
     const rect = button.getBoundingClientRect();
     if (rect.width === 0 || rect.height === 0) return;
     basePosRef.current = { left: rect.left, top: rect.top };
-  }, []);
+  }, [hasStarted, isLoading, isAccepted, isNoGone]);
 
   useLayoutEffect(() => {
     if (!isAccepted) return;
@@ -132,6 +133,16 @@ export default function App() {
         setIsShutdown(true);
       }, 7000);
     }, 1200);
+  };
+
+  const handleStartPress = () => {
+    setHasStarted(true);
+    const audio = bgAudioRef.current;
+    if (!audio) return;
+    const playPromise = audio.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {});
+    }
   };
 
   useEffect(() => {
@@ -230,7 +241,11 @@ export default function App() {
   };
 
   return (
-    <div className={`page${isShake ? " is-shaking" : ""}`}>
+    <div
+      className={`page${isShake ? " is-shaking" : ""}${
+        !hasStarted ? " is-start-screen" : ""
+      }`}
+    >
       {isShutdown ? (
         <div className="shutdown-overlay">
           <div
@@ -252,7 +267,14 @@ export default function App() {
       ) : null}
       {isShutdown ? <div className="shutdown-line" /> : null}
       <div className={`screen${isShutdown ? " is-shutdown" : ""}`}>
-        {isLoading ? (
+        {!hasStarted ? (
+          <main className="content start-screen">
+            <p className="question start-title">press start</p>
+            <button className="start-btn" type="button" onClick={handleStartPress}>
+              start
+            </button>
+          </main>
+        ) : isLoading ? (
           <main className="content">
             <p className="question">loading...</p>
             <div className="loading-line">
@@ -296,7 +318,7 @@ export default function App() {
             {pressMessage ? (
               <div className="press-message">{pressMessage}</div>
             ) : null}
-            <main className="content">
+            <main className="content content--question">
               <p className="question">Princess....</p>
               <p className="question">will you be my valentine?</p>
               <div className="actions">
@@ -343,7 +365,7 @@ export default function App() {
         loop
       />
 
-      {isAccepted ? null : (
+      {!hasStarted || isAccepted ? null : (
         <div ref={womphFixedRef} className="womph-counter">
           womph womph counter: {womphCount}
         </div>
