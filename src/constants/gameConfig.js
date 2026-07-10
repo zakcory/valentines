@@ -6,6 +6,8 @@ export const PRESS_MESSAGES = [
   "ok, enough",
 ];
 
+export const AUDIO_VOLUME = 0.6;
+
 export const TIMINGS = {
   SHAKE_MS: 200,
   BROKEN_MS: 1200,

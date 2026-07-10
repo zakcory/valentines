@@ -1,4 +1,4 @@
-import React from "react";
+import "./StartScreen.css";
 
 export default function StartScreen({ onStart }) {
   return (

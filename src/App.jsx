@@ -1,4 +1,3 @@
-import React from "react";
 import StartScreen from "./components/StartScreen";
 import LoadingScreen from "./components/LoadingScreen";
 import AcceptedScreen from "./components/AcceptedScreen";
@@ -28,13 +27,8 @@ export default function App() {
     counterFrom,
   } = state;
 
-  const {
-    bgAudioRef,
-    noButtonRef,
-    womphFixedRef,
-    womphAcceptedRef,
-    shutdownLineRef,
-  } = refs;
+  const { bgAudioRef, noButtonRef, womphFixedRef, womphAcceptedRef, shutdownLineRef } =
+    refs;
 
   const { handleYesPress, handleNoPress, handleStartPress, moveNoButton } = actions;
 
@@ -81,7 +75,7 @@ export default function App() {
         )}
       </div>
 
-      <audio ref={bgAudioRef} className="audio" src={audioSrc} autoPlay loop />
+      <audio ref={bgAudioRef} className="audio" src={audioSrc} loop />
 
       {!hasStarted || isAccepted ? null : (
         <div ref={womphFixedRef} className="womph-counter">

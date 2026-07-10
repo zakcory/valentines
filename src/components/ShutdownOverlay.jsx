@@ -1,4 +1,4 @@
-import React from "react";
+import "./ShutdownOverlay.css";
 
 export default function ShutdownOverlay({
   isShutdown,

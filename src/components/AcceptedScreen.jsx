@@ -1,11 +1,10 @@
-import React from "react";
+import "./AcceptedScreen.css";
 
 export default function AcceptedScreen({ womphCount, womphAcceptedRef, counterFrom }) {
   return (
     <main className="content">
       <p className="question">
-        your request has been accepted! zak&apos;s secretary will get back to you
-        shortly
+        your request has been accepted! zak&apos;s secretary will get back to you shortly
       </p>
       <div
         ref={womphAcceptedRef}

@@ -1,4 +1,4 @@
-import React from "react";
+import "./QuestionScreen.css";
 
 export default function QuestionScreen({
   pressMessage,
