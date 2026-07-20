@@ -1,0 +1,16 @@
+.video-screen {
+  transform: none;
+  /* pops in as the kiss scene hands off */
+  animation: pop-in 0.55s ease-out both;
+}
+
+.birthday-video {
+  display: block;
+  height: min(82vh, 760px);
+  width: auto;
+  max-width: 92vw;
+  background: #000;
+  border: 3px solid #2b2b2b;
+  box-shadow: 6px 6px 0 #2b2b2b;
+  image-rendering: auto;
+}

@@ -1,15 +1,22 @@
 # valentines
 
-A retro pixel-art "will you be my valentine?" page built with React + Vite. Press start, try to click "no" (good luck), click "yes", and watch the fake CRT shutdown.
+A retro pixel-art history of our events, built with React + Vite. The main screen is a "pick a memory" menu; each entry launches its own little experience (first up: the "will you be my valentine?" game — try to click "no", good luck).
 
 ## Structure
 
-- `src/App.jsx` — screen switcher; picks a screen from the game state
-- `src/hooks/useValentineGame.js` — all game state and logic
-- `src/hooks/useBackgroundAudio.js` — background-music autoplay/unlock
-- `src/components/` — one presentational component per screen, each with its own CSS file
-- `src/constants/gameConfig.js` — taunt messages and timing constants
-- `src/styles/base.css` — shared variables (colors, pixel-heart SVGs, font) and layout
+- `src/App.jsx` — renders the event menu, or the selected event's component
+- `src/events/index.js` — the `EVENTS` registry; **add new events here**
+- `src/events/valentine/` — the valentine game, fully self-contained (screens, hook, config, styles)
+- `src/components/EventMenu.jsx` — the main menu
+- `src/hooks/useBackgroundAudio.js` — background-music autoplay/unlock, reusable by any event
+- `src/styles/base.css` — shared variables (colors, pixel-heart SVGs, font), layout, `.pixel-btn`
+- `src/styles/ambient.css` — shared decorative backdrop (`.page--ambient`)
+
+## Adding an event
+
+1. Create `src/events/<name>/` with a top-level component (own `.page` wrapper, screens, styles).
+2. Add `{ id, name, date, Component }` to `EVENTS` in `src/events/index.js`.
+   Use `Component: null` to list an event before it's built (selecting it does nothing).
 
 ## Scripts
 

@@ -1,0 +1,58 @@
+.quiz {
+  gap: 34px;
+  animation: pop-in 0.55s ease-out both;
+}
+
+.quiz__options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 280px));
+  gap: 18px;
+  justify-content: center;
+}
+
+.quiz__option {
+  min-width: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.quiz__option.is-wrong {
+  filter: grayscale(1);
+  opacity: 0.55;
+  text-decoration: line-through;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 2px 2px 0 #2b2b2b;
+}
+
+.pixel-wink {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -0.2em;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' shape-rendering='crispEdges'><g fill='%232b2b2b'><rect x='4' y='0' width='4' height='1'/><rect x='2' y='1' width='2' height='1'/><rect x='8' y='1' width='2' height='1'/><rect x='1' y='2' width='1' height='2'/><rect x='10' y='2' width='1' height='2'/><rect x='0' y='4' width='1' height='4'/><rect x='11' y='4' width='1' height='4'/><rect x='1' y='8' width='1' height='2'/><rect x='10' y='8' width='1' height='2'/><rect x='2' y='10' width='2' height='1'/><rect x='8' y='10' width='2' height='1'/><rect x='4' y='11' width='4' height='1'/></g><g fill='%23ffd94a'><rect x='4' y='1' width='4' height='1'/><rect x='2' y='2' width='8' height='2'/><rect x='1' y='4' width='10' height='4'/><rect x='2' y='8' width='8' height='2'/><rect x='4' y='10' width='4' height='1'/></g><g fill='%232b2b2b'><rect x='3' y='4' width='1' height='2'/><rect x='7' y='5' width='2' height='1'/><rect x='3' y='7' width='1' height='1'/><rect x='8' y='7' width='1' height='1'/><rect x='4' y='8' width='4' height='1'/></g><g fill='%23ff9ab3'><rect x='2' y='6' width='1' height='1'/><rect x='9' y='6' width='1' height='1'/></g></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  image-rendering: pixelated;
+}
+
+.quiz__tease {
+  position: fixed;
+  top: 18px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-pixel);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: #000;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .quiz__options {
+    grid-template-columns: minmax(220px, 1fr);
+  }
+}

@@ -1,0 +1,14 @@
+.event-menu {
+  gap: 34px;
+  animation: pop-in 0.55s ease-out both;
+}
+
+.event-menu__list {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+}
+
+.event-menu__item {
+  min-width: 340px;
+}

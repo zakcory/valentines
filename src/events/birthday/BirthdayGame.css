@@ -1,0 +1,23 @@
+.birthday-note {
+  margin: 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  opacity: 0.7;
+}
+
+/* "correct!" celebration: pop in, then a gentle heartbeat while it holds. */
+.question--celebrate {
+  animation:
+    pop-in 0.4s ease-out both,
+    celebrate-pulse 0.7s ease-in-out 0.4s infinite alternate;
+}
+
+@keyframes celebrate-pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}

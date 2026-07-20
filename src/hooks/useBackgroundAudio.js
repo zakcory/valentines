@@ -1,16 +1,15 @@
 import { useEffect } from "react";
-import { AUDIO_VOLUME } from "../constants/gameConfig";
 
 /**
  * Tries to autoplay the background track and, if the browser blocks it,
  * starts it on the first user interaction instead.
  */
-export default function useBackgroundAudio(audioRef) {
+export default function useBackgroundAudio(audioRef, volume = 1) {
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    audio.volume = AUDIO_VOLUME;
+    audio.volume = volume;
 
     const tryPlay = () => {
       audio.play().catch(() => {});
@@ -36,5 +35,5 @@ export default function useBackgroundAudio(audioRef) {
       window.removeEventListener("keydown", unlock);
       window.removeEventListener("touchstart", unlock);
     };
-  }, [audioRef]);
+  }, [audioRef, volume]);
 }

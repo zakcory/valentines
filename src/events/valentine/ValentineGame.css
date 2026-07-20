@@ -1,0 +1,15 @@
+.audio {
+  display: none;
+}
+
+/* Fixed corner counter rendered by ValentineGame; the accepted-screen variant
+   lives in components/AcceptedScreen.css. */
+.womph-counter {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
