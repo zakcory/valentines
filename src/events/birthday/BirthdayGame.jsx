@@ -5,6 +5,7 @@ import fahh3 from "../../assets/fahh-3.mp3";
 import QuizScreen from "./components/QuizScreen";
 import PhotoReveal from "./components/PhotoReveal";
 import VideoScreen from "./components/VideoScreen";
+import BirthdayFinale from "./components/BirthdayFinale";
 import { QUIZ, TIMINGS, WRONG_MESSAGES } from "./config";
 import "./BirthdayGame.css";
 
@@ -12,7 +13,7 @@ import "./BirthdayGame.css";
 const FAHH_SOUNDS = [fahh1, fahh2, fahh3];
 
 export default function BirthdayGame() {
-  // "quiz" -> "correct" -> "photos" -> (after the kiss) "video"
+  // "quiz" -> "correct" -> "photos" -> (after the kiss) "video" -> "finale"
   const [phase, setPhase] = useState("quiz");
   const [wrongIds, setWrongIds] = useState([]);
   const [teaseMessage, setTeaseMessage] = useState("");
@@ -55,8 +56,10 @@ export default function BirthdayGame() {
   return (
     <div className={`page page--ambient${isShake ? " is-shaking" : ""}`}>
       <div className="screen">
-        {phase === "video" ? (
-          <VideoScreen />
+        {phase === "finale" ? (
+          <BirthdayFinale />
+        ) : phase === "video" ? (
+          <VideoScreen onEnded={() => setPhase("finale")} />
         ) : phase === "photos" ? (
           <PhotoReveal onFinish={() => setPhase("video")} />
         ) : phase === "correct" ? (

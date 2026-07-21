@@ -4,7 +4,7 @@ export const QUIZ = {
   options: [
     { id: "a", label: 'we like "fucking" (the phrase my heart)', correct: false },
     { id: "b", label: "rating food", correct: false },
-    { id: "c", label: "197, 215....", correct: true },
+    { id: "c", label: "we are both autistic", correct: true },
     { id: "d", label: "we like the opposite colors of the chocolate 😉", correct: false },
   ],
 };

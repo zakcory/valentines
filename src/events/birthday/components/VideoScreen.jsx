@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import videoSrc from "../../../assets/happy-birthday.mp4";
 import "./VideoScreen.css";
 
-export default function VideoScreen() {
+export default function VideoScreen({ onEnded }) {
   const videoRef = useRef(null);
 
   // The reveal button click counts as a user gesture, so playing with sound
@@ -21,6 +21,7 @@ export default function VideoScreen() {
         playsInline
         controls
         autoPlay
+        onEnded={onEnded}
       />
     </main>
   );
